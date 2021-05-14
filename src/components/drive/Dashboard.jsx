@@ -1,4 +1,5 @@
 import React from "react";
+import AddNewFileButton from "./AddNewFileButton";
 import AddNewFolderButton from "./AddNewFolderButton";
 
 function Dashboard() {
@@ -9,6 +10,7 @@ function Dashboard() {
           <h2>Dashboard</h2>
         </div>
         <div>
+          <AddNewFileButton />
           <AddNewFolderButton />
         </div>
       </div>

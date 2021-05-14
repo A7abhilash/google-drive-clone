@@ -14,7 +14,7 @@ function AppRoute() {
   const { currentUser } = useAuth();
 
   return (
-    <div className="container mt-3">
+    <div className="container">
       <Switch>
         {/* Drive */}
         <AuthRoute exact path="/" component={Dashboard} />
