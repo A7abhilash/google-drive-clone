@@ -4,7 +4,7 @@ function CenteredContainer({ children }) {
   return (
     <div
       className="d-flex align-items-center justify-content-center pt-5"
-      style={{ height: "90vh" }}
+      style={{ minHeight: "85vh" }}
     >
       {children}
     </div>

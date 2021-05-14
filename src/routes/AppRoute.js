@@ -5,7 +5,7 @@ import Login from "../components/auth/Login";
 import Profile from "../components/auth/Profile";
 import Signup from "../components/auth/Signup";
 import UpdateProfile from "../components/auth/UpdateProfile";
-import Dashboard from "../components/Dashboard";
+import Dashboard from "../components/drive/Dashboard";
 import { useAuth } from "../contexts/AuthContext";
 import AuthRoute from "./AuthRoute";
 import GuestRoute from "./GuestRoute";
