@@ -7,6 +7,7 @@ export const ROOT_FOLDER = { name: "Root", id: null, parentId: null };
 function useFolder(folderId = null) {
   const { currentUser } = useAuth();
   const [currentFolder, setCurrentFolder] = useState(null);
+  const [childFolders, setChildFolders] = useState(null);
 
   useEffect(() => {
     if (currentUser) {
@@ -14,8 +15,10 @@ function useFolder(folderId = null) {
       if (folderId) {
         database
           .folders(currentUser.uid)
+          .doc(folderId)
           .get()
           .then((doc) => {
+            // console.log(doc);
             setCurrentFolder(database.formatDocument(doc));
           });
       } else {
@@ -24,7 +27,21 @@ function useFolder(folderId = null) {
     }
   }, [folderId, currentUser]);
 
-  return { folderId, currentFolder };
+  useEffect(() => {
+    if (currentUser) {
+      database
+        .folders(currentUser.uid)
+        .where("parentId", "==", folderId)
+        // .orderBy("createdAt")
+        .onSnapshot((snapshot) => {
+          setChildFolders(
+            snapshot.docs.map((doc) => database.formatDocument(doc))
+          );
+        });
+    }
+  }, [folderId, currentUser]);
+
+  return { folderId, currentFolder, childFolders };
 }
 
 export default useFolder;
