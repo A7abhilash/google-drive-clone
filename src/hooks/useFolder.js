@@ -8,7 +8,10 @@ function useFolder(folderId = null) {
   const { currentUser } = useAuth();
   const [currentFolder, setCurrentFolder] = useState(null);
   const [childFolders, setChildFolders] = useState(null);
+  const [childFiles, setChildFiles] = useState(null);
+  const [path, setPath] = useState([ROOT_FOLDER]);
 
+  // Get current folder details
   useEffect(() => {
     if (currentUser) {
       console.log("folder id: ", folderId);
@@ -27,6 +30,7 @@ function useFolder(folderId = null) {
     }
   }, [folderId, currentUser]);
 
+  // Get all the child folders in current folder
   useEffect(() => {
     if (currentUser) {
       database
@@ -41,7 +45,31 @@ function useFolder(folderId = null) {
     }
   }, [folderId, currentUser]);
 
-  return { folderId, currentFolder, childFolders };
+  //Update path
+  useEffect(() => {
+    if (folderId) {
+      if (currentFolder) {
+        // if(path.find(item=>item.id===currentFolder.id))
+        let index;
+        const newPath = [...path];
+        if (
+          (index = path.findIndex((item) => item.id === currentFolder.id)) !==
+          -1
+        ) {
+          newPath.length = index + 1;
+          setPath(newPath);
+        } else {
+          let { name, id } = currentFolder;
+          newPath.push({ name, id });
+          setPath(newPath);
+        }
+      }
+    } else {
+      setPath([ROOT_FOLDER]);
+    }
+  }, [folderId, currentFolder]);
+
+  return { folderId, currentFolder, childFolders, path };
 }
 
 export default useFolder;
