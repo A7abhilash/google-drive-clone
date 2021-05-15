@@ -1,13 +1,26 @@
 import React, { useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
+import { database } from "../../firebase";
 
-function AddNewFolderButton() {
+function AddNewFolderButton({ currentFolder }) {
+  const { currentUser } = useAuth();
   const [name, setName] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (name) {
-      // console.log(name);
-      setName("");
+      try {
+        let newFolder = {
+          name,
+          parentId: currentFolder.id,
+          createdAt: database.getCurrentTimestamp(),
+        };
+        await database.folders(currentUser.uid).add(newFolder);
+        alert("New folder created.");
+        setName("");
+      } catch (error) {
+        alert(error.message);
+      }
     } else {
       alert("Empty field!!!");
     }
