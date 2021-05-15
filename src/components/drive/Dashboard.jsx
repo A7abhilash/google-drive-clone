@@ -8,14 +8,19 @@ import FoldersBreadcrumb from "./FoldersBreadcrumb";
 
 function Dashboard() {
   const { id: folderId } = useParams();
-  const { currentFolder, childFolders, path } = useFolder(folderId);
-  // console.log("path: ", path);
+  const { currentFolder, childFolders } = useFolder(folderId);
+  // console.log("currentFolder: ", currentFolder);
 
   return (
     <div>
       <div className="d-flex align-items-center justify-content-between my-1">
         <div className="pt-3">
-          {path && <FoldersBreadcrumb path={path} folderId={folderId} />}
+          {currentFolder && (
+            <FoldersBreadcrumb
+              path={currentFolder.path}
+              currentFolder={currentFolder}
+            />
+          )}
         </div>
         <div>
           <AddNewFileButton currentFolder={currentFolder} />

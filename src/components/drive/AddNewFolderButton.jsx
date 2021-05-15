@@ -10,9 +10,14 @@ function AddNewFolderButton({ currentFolder }) {
     e.preventDefault();
     if (name) {
       try {
+        let path = currentFolder.path;
+        if (currentFolder.id !== null) {
+          path.push({ name: currentFolder.name, id: currentFolder.id });
+        }
         let newFolder = {
           name,
           parentId: currentFolder.id,
+          path,
           createdAt: database.getCurrentTimestamp(),
         };
         await database.folders(currentUser.uid).add(newFolder);
