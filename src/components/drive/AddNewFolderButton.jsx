@@ -10,7 +10,7 @@ function AddNewFolderButton({ currentFolder }) {
     e.preventDefault();
     if (name) {
       try {
-        let path = currentFolder.path;
+        let path = [...currentFolder.path];
         if (currentFolder.id !== null) {
           path.push({ name: currentFolder.name, id: currentFolder.id });
         }

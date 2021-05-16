@@ -40,7 +40,7 @@ function useFolder(folderId = null) {
       database
         .folders(currentUser.uid)
         .where("parentId", "==", folderId)
-        // .orderBy("createdAt")
+        .orderBy("createdAt")
         .onSnapshot((snapshot) => {
           setChildFolders(
             snapshot.docs.map((doc) => database.formatDocument(doc))
@@ -49,7 +49,22 @@ function useFolder(folderId = null) {
     }
   }, [folderId, currentFolder, currentUser]);
 
-  return { folderId, currentFolder, childFolders };
+  // Get all the child files in current folder
+  useEffect(() => {
+    if (currentUser) {
+      database
+        .files(currentUser.uid)
+        .where("parentId", "==", folderId)
+        .orderBy("createdAt")
+        .onSnapshot((snapshot) => {
+          setChildFiles(
+            snapshot.docs.map((doc) => database.formatDocument(doc))
+          );
+        });
+    }
+  }, [folderId, currentFolder, currentUser]);
+
+  return { folderId, currentFolder, childFolders, childFiles };
 }
 
 export default useFolder;
