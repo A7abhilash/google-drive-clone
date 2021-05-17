@@ -6,16 +6,10 @@ function AddNewFileButton({ currentFolder }) {
   const { currentUser } = useAuth();
   const [status, setStatus] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(null);
-  const [check, setCheck] = useState(false);
-
-  const handleCheck = () => {
-    setCheck(true);
-    setTimeout(() => setCheck(false), 5000);
-  };
 
   const handleUpload = (e) => {
     const file = e.target.files[0];
-    console.log(file);
+    // console.log(file);
     try {
       const uploadTask = storage.ref().child(`/ads/${Date.now()}`).put(file);
       uploadTask.on(
