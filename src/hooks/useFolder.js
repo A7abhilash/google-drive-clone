@@ -40,7 +40,7 @@ function useFolder(folderId = null) {
       database
         .folders(currentUser.uid)
         .where("parentId", "==", folderId)
-        .orderBy("createdAt")
+        // .orderBy("createdAt")
         .onSnapshot((snapshot) => {
           setChildFolders(
             snapshot.docs.map((doc) => database.formatDocument(doc))
@@ -55,7 +55,7 @@ function useFolder(folderId = null) {
       database
         .files(currentUser.uid)
         .where("parentId", "==", folderId)
-        .orderBy("createdAt")
+        // .orderBy("createdAt")
         .onSnapshot((snapshot) => {
           setChildFiles(
             snapshot.docs.map((doc) => database.formatDocument(doc))
