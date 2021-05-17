@@ -41,7 +41,7 @@ function Signup() {
               <input
                 type="email"
                 ref={emailRef}
-                className="form-control"
+                className="form-control mb-2"
                 placeholder="Enter new email"
                 required
               />
@@ -51,7 +51,7 @@ function Signup() {
               <input
                 type="password"
                 ref={passwordRef}
-                className="form-control"
+                className="form-control mb-2"
                 placeholder="Password"
                 required
               />
@@ -61,14 +61,16 @@ function Signup() {
               <input
                 type="password"
                 ref={confirmPasswordRef}
-                className="form-control"
+                className="form-control mb-2"
                 placeholder="Confirm Password"
                 required
               />
             </div>
-            <button disabled={loading} className="btn btn-primary btn-block">
-              Sign Up
-            </button>
+            <div className="form-group">
+              <button disabled={loading} className="btn btn-primary btn-sm">
+                Sign Up
+              </button>
+            </div>
           </form>
         </div>
         <div className="card-footer text-center pb-1">

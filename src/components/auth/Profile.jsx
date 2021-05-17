@@ -34,7 +34,7 @@ function Profile() {
           </div>
         </div>
         <div className="card-footer">
-          <button onClick={handleLogout} className="btn btn-block btn-danger">
+          <button onClick={handleLogout} className="btn btn-sm btn-danger">
             Sign out
           </button>
         </div>

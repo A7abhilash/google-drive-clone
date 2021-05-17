@@ -41,12 +41,12 @@ function ForgotPassword() {
                 <input
                   type="email"
                   ref={emailRef}
-                  className="form-control"
+                  className="form-control mb-2"
                   placeholder="Enter your email"
                   required
                 />
               </div>
-              <button disabled={loading} className="btn btn-primary btn-block">
+              <button disabled={loading} className="btn btn-primary btn-sm">
                 Reset Password
               </button>
             </form>

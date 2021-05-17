@@ -11,7 +11,7 @@ function AddNewFileButton({ currentFolder }) {
     const file = e.target.files[0];
     // console.log(file);
     try {
-      const uploadTask = storage.ref().child(`/ads/${Date.now()}`).put(file);
+      const uploadTask = storage.ref().child(`/gd/${Date.now()}`).put(file);
       uploadTask.on(
         "state_changed",
         (snapshot) => {
@@ -44,7 +44,7 @@ function AddNewFileButton({ currentFolder }) {
               createdAt: database.getCurrentTimestamp(),
             };
             await database.files(currentUser.uid).add(newFile);
-            alert("Your image was uploaded");
+            alert("Your file was uploaded successfully");
             setUploadProgress(null);
             setStatus(null);
           });
@@ -122,4 +122,5 @@ const innerView = {
   paddingTop: 5,
   paddingLeft: 10,
   paddingRight: 10,
+  borderRadius: 10,
 };

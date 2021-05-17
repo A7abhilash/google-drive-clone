@@ -52,7 +52,7 @@ function UpdateProfile() {
               <input
                 type="email"
                 ref={emailRef}
-                className="form-control"
+                className="form-control mb-2"
                 placeholder="Enter new email"
                 required
                 defaultValue={currentUser.email}
@@ -63,7 +63,7 @@ function UpdateProfile() {
               <input
                 type="password"
                 ref={passwordRef}
-                className="form-control"
+                className="form-control mb-2"
                 placeholder="Leave blank to keep the same password"
               />
             </div>
@@ -72,11 +72,14 @@ function UpdateProfile() {
               <input
                 type="password"
                 ref={confirmPasswordRef}
-                className="form-control"
+                className="form-control mb-2"
                 placeholder="Leave blank to keep the same password"
               />
             </div>
-            <button disabled={loading} className="btn btn-primary btn-block">
+            <button
+              disabled={loading}
+              className="btn btn-primary btn-block btn-sm"
+            >
               Update Profile
             </button>
           </form>

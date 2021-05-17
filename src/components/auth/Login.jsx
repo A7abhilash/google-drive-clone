@@ -36,7 +36,7 @@ function Login() {
               <input
                 type="email"
                 ref={emailRef}
-                className="form-control"
+                className="form-control mb-2"
                 placeholder="Enter email"
                 required
               />
@@ -46,12 +46,12 @@ function Login() {
               <input
                 type="password"
                 ref={passwordRef}
-                className="form-control"
+                className="form-control mb-2"
                 placeholder="Password"
                 required
               />
             </div>
-            <button disabled={loading} className="btn btn-primary btn-block">
+            <button disabled={loading} className="btn btn-primary btn-sm">
               Login
             </button>
           </form>
