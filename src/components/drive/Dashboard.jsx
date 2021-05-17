@@ -4,12 +4,13 @@ import useFolder from "../../hooks/useFolder";
 import AddNewFileButton from "./AddNewFileButton";
 import AddNewFolderButton from "./AddNewFolderButton";
 import DisplayChildFolders from "./DisplayChildFolders";
+import DisplayChildFiles from "./DisplayChildFiles";
 import FoldersBreadcrumb from "./FoldersBreadcrumb";
 
 function Dashboard() {
   const { id: folderId } = useParams();
-  const { currentFolder, childFolders } = useFolder(folderId);
-  // console.log("currentFolder: ", currentFolder);
+  const { currentFolder, childFolders, childFiles } = useFolder(folderId);
+  // console.log("childFiles: ", childFiles);
 
   return (
     <div>
@@ -29,6 +30,13 @@ function Dashboard() {
       </div>
       <div className="d-flex flex-wrap mt-3">
         {childFolders && <DisplayChildFolders folders={childFolders} />}
+      </div>
+      {childFolders &&
+        childFolders.length > 0 &&
+        childFiles &&
+        childFiles.length > 0 && <hr />}
+      <div className="d-flex flex-wrap mt-3">
+        {childFiles && <DisplayChildFiles files={childFiles} />}
       </div>
     </div>
   );
