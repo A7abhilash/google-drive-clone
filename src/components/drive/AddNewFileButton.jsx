@@ -27,6 +27,8 @@ function AddNewFileButton({ currentFolder }) {
             case "running":
               setStatus("Upload is running");
               break;
+            default:
+              setStatus(snapshot.state);
           }
         },
         (error) => {
