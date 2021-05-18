@@ -25,8 +25,15 @@ function useFolder(folderId = null) {
           .doc(folderId)
           .get()
           .then((doc) => {
-            // console.log(doc);
-            setCurrentFolder(database.formatDocument(doc));
+            // console.log("DATA: ", doc.data());
+            if (doc.data()) {
+              setCurrentFolder(database.formatDocument(doc));
+            } else {
+              alert("No folder found...");
+              setCurrentFolder({
+                path: [{ name: "Go back to root", id: null }],
+              });
+            }
           });
       } else {
         setCurrentFolder(ROOT_FOLDER);
