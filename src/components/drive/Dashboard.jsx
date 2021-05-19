@@ -31,10 +31,7 @@ function Dashboard() {
       <div className="d-flex flex-wrap mt-3">
         {childFolders && <DisplayChildFolders folders={childFolders} />}
       </div>
-      {childFolders &&
-        childFolders.length > 0 &&
-        childFiles &&
-        childFiles.length > 0 && <hr />}
+      {childFolders?.length > 0 && childFiles?.length > 0 && <hr />}
       <div className="d-flex flex-wrap mt-3">
         {childFiles && <DisplayChildFiles files={childFiles} />}
       </div>
