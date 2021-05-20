@@ -3,10 +3,10 @@ import { database } from "../firebase";
 import { useAuth } from "../contexts/AuthContext";
 
 export const ROOT_FOLDER = {
-  name: "Root",
+  name: "Home",
   id: null,
   parentId: null,
-  path: [{ name: "Root", id: null }],
+  path: [{ name: "Home", id: null }],
 };
 
 function useFolder(folderId = null) {
@@ -44,7 +44,7 @@ function useFolder(folderId = null) {
   // Get all the child folders in current folder
   useEffect(() => {
     if (currentUser) {
-      database
+      return database
         .folders(currentUser.uid)
         .where("parentId", "==", folderId)
         .orderBy("createdAt")
@@ -59,7 +59,7 @@ function useFolder(folderId = null) {
   // Get all the child files in current folder
   useEffect(() => {
     if (currentUser) {
-      database
+      return database
         .files(currentUser.uid)
         .where("parentId", "==", folderId)
         .orderBy("createdAt")
