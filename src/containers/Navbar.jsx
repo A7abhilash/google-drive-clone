@@ -10,7 +10,13 @@ function Navbar() {
       style={{ height: "8vh" }}
     >
       <div className="container">
-        <div className="navbar-brand">
+        <div className="navbar-brand d-flex align-items-center">
+          <img
+            src={require("../icon.png")}
+            alt="Icon"
+            className="pb-2"
+            style={{ width: 30, marginRight: 5 }}
+          />
           <h3>
             <Link to="/" className="text-decoration-none">
               Google Drive Clone

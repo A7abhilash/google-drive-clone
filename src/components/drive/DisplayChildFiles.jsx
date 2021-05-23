@@ -6,6 +6,7 @@ function DisplayChildFolders({ files }) {
       <a
         href={file.url}
         target="_blank"
+        rel="noopener noreferrer"
         className="btn btn-sm btn-outline-dark text-truncate w-100 text-decoration-none"
       >
         <i className="fa fa-file" style={{ marginRight: "5px" }}></i>
